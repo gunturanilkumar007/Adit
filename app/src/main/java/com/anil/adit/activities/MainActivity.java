@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new AdsFragment(), "Ads");
+        adapter.addFrag(new AdsFragment(), "Adss");
         adapter.addFrag(new TreeFragment(), "Tree");
         adapter.addFrag(new OffersFragment(), "Offers");
         adapter.addFrag(new ProfileFragment(), "Profile");
