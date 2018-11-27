@@ -17,4 +17,12 @@
     <color name="red_500">#01579B</color>
     <color name="red_400">#18FFFF</color>
     <color name="red_300">#00695C</color>
+
+    <color name="lightOrange">#FE9B30</color>
+    <color name="darkOrange">#F97D1D</color>
+    <color name="darkYellow">#FBD233</color>
+    <color name="lightYellow">#FE9B30</color>
+    <color name="lightBlue">#303F9F</color>
+    <color name="darkBlue">#23283D</color>
+    <color name="lighttrans">#7023283D</color>
 </resources>

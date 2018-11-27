@@ -1,16 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.TreeFragment">
+    tools:context=".activities.MainActivity">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+
+        android:background="#fff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent" />
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/tree_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Tree"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+        android:layout_below="@+id/bar"
+        android:layout_centerInParent="true"
 
-</FrameLayout>
+        android:background="#fff">
+
+
+        <ImageView
+            android:id="@+id/tree_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/tree_art_png" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/tree_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bar">
+
+        <ImageView
+            android:id="@+id/sun_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/sun_1" />
+
+        <ImageView
+            android:id="@+id/cloud_img"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:src="@drawable/cloud_1" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/tree_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bar"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/ferti_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="10dp"
+            android:src="@drawable/fer" />
+
+        <ImageView
+            android:id="@+id/faren_img"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@drawable/thermo_2" />
+    </FrameLayout>
+</RelativeLayout>
