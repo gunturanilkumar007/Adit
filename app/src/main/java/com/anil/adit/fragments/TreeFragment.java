@@ -4,30 +4,33 @@ import android.animation.ValueAnimator;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.anil.adit.R;
-import com.anil.adit.activities.MainActivity;
 import com.anil.adit.utils.Constants;
 import com.plattysoft.leonids.ParticleSystem;
 import com.plattysoft.leonids.modifiers.ScaleModifier;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class TreeFragment extends Fragment {
-    ImageView sun, cloud, tree, fertilizer, thermometer;
+    ImageView sun, cloud, tree, fertilizer, thermometer, sunRay;
     FrameLayout treeLayout;
 
     Animation upAnim, fadeOut, fadeIn, backFadeIn;
@@ -38,6 +41,7 @@ public class TreeFragment extends Fragment {
     private int lastHeight;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private ProgressBar progressbar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,14 +59,19 @@ public class TreeFragment extends Fragment {
         thermometer = (ImageView) view.findViewById(R.id.faren_img);
         fertilizer = (ImageView) view.findViewById(R.id.ferti_img);
         treeLayout = (FrameLayout) view.findViewById(R.id.tree_layout);
+        sunRay = (ImageView) view.findViewById(R.id.sun_ray_img);
 
-        expand(tree, 1000, lastHeight, lastHeight);
+        progressbar = (ProgressBar) view.findViewById(R.id.myprogressbar);
+
+        lastDuration();
+
         sun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ps.stopEmitting();
-               // ps1.stopEmitting();
+                // ps1.stopEmitting();
                 sunKiranMethod(sun);
+                TreeGrowth();
 
             }
         });
@@ -70,11 +79,27 @@ public class TreeFragment extends Fragment {
         cloud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 fallRainMethod(cloud);
-                int pre = sharedPreferences.getInt(Constants.TREE_HEIGHT, 100);
-                lastHeight = lastHeight + Constants.TREE_DURATION;
-                expand(tree, 1000, lastHeight, pre);
-                editor.putInt(Constants.TREE_HEIGHT, lastHeight).commit();
+
+                final Handler handler = new Handler();
+                Timer timer = new Timer();
+                TimerTask doAsynchronousTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        handler.post(new Runnable() {
+                            public void run() {
+                                try {
+                                    fallRainMethod(cloud);
+                                    //your method here
+                                } catch (Exception e) {
+                                }
+                            }
+                        });
+                    }
+                };
+                timer.schedule(doAsynchronousTask, 0, 600000);
+
+
+                TreeGrowth();
 
             }
         });
@@ -83,7 +108,9 @@ public class TreeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 temperature(tree);
-                editor.putInt(Constants.TREE_HEIGHT, 0).clear().commit();
+                // editor.putInt(Constants.TREE_HEIGHT, 0).clear().commit();
+
+                TreeGrowth();
             }
         });
 
@@ -92,9 +119,31 @@ public class TreeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fertilizerFeed(tree);
+                TreeGrowth();
             }
         });
         return view;
+    }
+
+    private void lastDuration() {
+
+        if (lastHeight / 10 >= 100) {
+            editor.putInt(Constants.TREE_HEIGHT, 0).clear().commit();
+            Toast.makeText(getActivity(), "Tree Growth completed", Toast.LENGTH_LONG).show();
+        } else {
+            expand(tree, 1000, lastHeight, lastHeight);
+            progressbar.setProgress(lastHeight / 10);
+        }
+    }
+
+    private void TreeGrowth() {
+        int pre = sharedPreferences.getInt(Constants.TREE_HEIGHT, 100);
+        lastHeight = lastHeight + Constants.TREE_DURATION;
+        expand(tree, 1000, lastHeight, pre);
+        editor.putInt(Constants.TREE_HEIGHT, lastHeight).commit();
+        progressbar.setProgress(lastHeight / 10);
+        lastDuration();
+
     }
 
     private void temperature(ImageView tree) {
@@ -116,13 +165,20 @@ public class TreeFragment extends Fragment {
         ps.setFadeOut(200, new AccelerateInterpolator());
         ps.emit((int) tree.getX(), (int) tree.getY(), 40);*/
 
-        ParticleSystem ps = new ParticleSystem(getActivity(), 100, R.drawable.water, 1000);
+      /*  ParticleSystem ps = new ParticleSystem(getActivity(), 100, R.drawable.water, 1000);
         ps.setScaleRange(0.7f, 1.3f);
         ps.setSpeedModuleAndAngleRange(0.07f, 0.16f, 0, 180);
         ps.setRotationSpeedRange(90, 180);
         ps.setAcceleration(0.00013f, 90);
         ps.setFadeOut(200, new AccelerateInterpolator());
-        ps.emit(tree, 100, 2000);
+        ps.emit(tree, 100, 3000);*/
+
+
+        ps = new ParticleSystem(getActivity(), 80, R.drawable.dots, 10000);
+        ps.setSpeedModuleAndAngleRange(0f, 0.1f, 270, 270);
+        ps.setRotationSpeed(144);
+        ps.setAcceleration(0.000017f, 360);
+        ps.emit(fertilizer, 8);
     }
 
     private void sunKiranMethod(View v) {
@@ -147,11 +203,11 @@ public class TreeFragment extends Fragment {
                 .emit(tree, 100);*/
 
         fadeOut = AnimationUtils.loadAnimation(getActivity(), R.anim.fadeout);
-        treeLayout.startAnimation(fadeOut);
+        sunRay.startAnimation(fadeOut);
 
 
         fadeIn = AnimationUtils.loadAnimation(getActivity(), R.anim.fadein);
-        treeLayout.startAnimation(fadeIn);
+        sunRay.startAnimation(fadeIn);
 
 
         upAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.up_anim);
@@ -159,7 +215,8 @@ public class TreeFragment extends Fragment {
         upAnim.setFillAfter(true);
 
         backFadeIn = AnimationUtils.loadAnimation(getActivity(), R.anim.background_fadein);
-        treeLayout.startAnimation(backFadeIn);
+        sunRay.startAnimation(backFadeIn);
+
 
     }
 
@@ -169,7 +226,7 @@ public class TreeFragment extends Fragment {
                 .setAcceleration(0.00005f, 120)
                 .emitWithGravity(v, Gravity.TOP, 8);*/
 
-      ps = new ParticleSystem(getActivity(), 80, R.drawable.dots, 10000);
+        ps = new ParticleSystem(getActivity(), 80, R.drawable.dots, 10000);
         ps.setSpeedModuleAndAngleRange(0f, 0.1f, 140, 140);
         ps.setRotationSpeed(144);
         ps.setAcceleration(0.000017f, 90);
@@ -201,4 +258,6 @@ public class TreeFragment extends Fragment {
         valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         valueAnimator.start();
     }
+
+
 }

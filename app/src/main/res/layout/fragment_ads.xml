@@ -3,49 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical"
     android:layout_gravity="center"
-    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".fragments.AdsFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:id="@+id/videos"
-        android:gravity="center"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/videos_gradient">
+        android:background="@drawable/videos_gradient"
+        android:gravity="center"
+        android:visibility="gone">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Videos"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:id="@+id/book_layout"
-        android:gravity="center"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/pages_gradient">
+        android:background="@drawable/pages_gradient"
+        android:gravity="center"
+        android:visibility="gone">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pages"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:background="@drawable/videos_gradient"
         android:gravity="center"
-        android:id="@+id/puzzle"
-        android:background="@drawable/videos_gradient">
+        android:visibility="gone">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Puzzle"
-            android:textColor="@color/white"/>
+            android:text="Games"
+            android:textColor="@color/white" />
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/generic_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
 
 </LinearLayout>

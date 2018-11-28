@@ -8,7 +8,7 @@
         android:toAlpha="1.0"
         android:duration="600"
         android:repeatMode="reverse"
-        android:repeatCount="8"
+        android:repeatCount="7"
         android:interpolator="@android:anim/accelerate_interpolator"/>
 
 </set>

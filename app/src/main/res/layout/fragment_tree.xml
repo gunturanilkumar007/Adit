@@ -9,14 +9,17 @@
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="10dp"
 
         android:background="#fff">
 
-        <TextView
-            android:layout_width="match_parent"
+        <ProgressBar
+            android:id="@+id/myprogressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent" />
+            android:max="100"
+            android:progressDrawable="@drawable/horizontal_progress_bar" />
     </LinearLayout>
 
 
@@ -49,7 +52,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:src="@drawable/sun_1" />
+            android:src="@drawable/sunny" />
 
         <ImageView
             android:id="@+id/cloud_img"
@@ -85,4 +88,18 @@
             android:layout_margin="10dp"
             android:src="@drawable/thermo_2" />
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/sun_ray_img"
+        android:layout_width="327dp"
+        android:layout_height="501dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="57dp"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/sun_ray"
+        android:visibility="invisible" />
 </RelativeLayout>
