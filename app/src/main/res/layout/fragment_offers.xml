@@ -1,16 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.OffersFragment">
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/gra"/>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Offers"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:visibility="visible">
 
-</FrameLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="50dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="2dp"
+
+            app:contentPadding="3dp"
+            card_view:cardElevation="5dp"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:id="@+id/title_desc_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/pager"
+                        android:layout_width="fill_parent"
+                        android:layout_height="150dp"
+                        android:layout_alignParentTop="true" />
+
+                    <me.relex.circleindicator.CircleIndicator
+                        android:id="@+id/indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignParentBottom="true"
+                        app:ci_drawable="@drawable/cir" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/menu_listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:nestedScrollingEnabled="false" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

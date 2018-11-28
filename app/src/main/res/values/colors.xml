@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
 
     <color name="pink_500">#880E4F</color>
@@ -25,4 +26,7 @@
     <color name="lightBlue">#303F9F</color>
     <color name="darkBlue">#23283D</color>
     <color name="lighttrans">#7023283D</color>
+
+    <color name="mdtp_transparent_black">#7f000000</color>
+    <color name="feed_item_bg">#ffffff</color>
 </resources>

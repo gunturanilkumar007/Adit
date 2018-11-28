@@ -3,4 +3,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="wallet_str">Congratulations..\n₹ 1 added to your wallet.</string>
+    <string name="offer_details">* Get 20% SuperCash @ Snapdeal!\n\n
+* Maximum SuperCash that can be availed is Rs.500\n\n
+* No code required\n\n
+* Offer valid twice per user during the offer period\n\n
+* Offer valid from 1st November - 30th November, 2018\n\n
+* SuperCash will be directly credited to your MobiKwik wallet within 24 hours\n\n
+* MobiKwik and Snapdeal reserve the right to discontinue the offer without any prior notice\n\n
+* IndusInd, BSNL &amp; Bajaj wallet apps are powered by MobiKwik. You can select MobiKwik at merchant checkouts to avail offers &amp; use your wallet money!\n\n
+* There is no minimum transaction amount for SuperCash redemption\n\n
+ </string>
 </resources>
