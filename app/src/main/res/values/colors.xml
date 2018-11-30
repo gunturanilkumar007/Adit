@@ -29,4 +29,5 @@
 
     <color name="mdtp_transparent_black">#7f000000</color>
     <color name="feed_item_bg">#ffffff</color>
+    <color name="hint">#9E9E9E</color>
 </resources>

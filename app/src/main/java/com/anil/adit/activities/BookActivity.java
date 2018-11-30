@@ -22,7 +22,7 @@ public class BookActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private static CountDownTimer countDownTimer;
     private TextView countdownTimerText;
-    Integer[] imageId = {R.drawable.wood, R.drawable.three};
+    Integer[] imageId = {R.drawable.eenadu_one, R.drawable.eenadu_two,R.drawable.eenadu_three};
     private int count=0;
 
     @Override
@@ -34,7 +34,7 @@ public class BookActivity extends AppCompatActivity {
         countdownTimerText = (TextView)findViewById(R.id.count_down);
         CustomAdapter customAdapter=new CustomAdapter(BookActivity.this,imageId);
         viewPager.setAdapter(customAdapter);
-        startTimer(5000);
+        startTimer(10000);
     }
 
     public class CustomAdapter extends PagerAdapter {

@@ -107,6 +107,7 @@ public class TreeFragment extends Fragment {
         thermometer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ps.stopEmitting();
                 temperature(tree);
                 // editor.putInt(Constants.TREE_HEIGHT, 0).clear().commit();
 
@@ -118,6 +119,7 @@ public class TreeFragment extends Fragment {
         fertilizer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ps.stopEmitting();
                 fertilizerFeed(tree);
                 TreeGrowth();
             }
@@ -147,7 +149,7 @@ public class TreeFragment extends Fragment {
     }
 
     private void temperature(ImageView tree) {
-        new ParticleSystem(getActivity(), 10, R.drawable.water, 3000)
+        new ParticleSystem(getActivity(), 10, R.drawable.dots, 3000)
                 .setSpeedByComponentsRange(-0.1f, 0.1f, -0.1f, 0.02f)
                 .setAcceleration(0.000003f, 90)
                 .setInitialRotationRange(0, 360)
@@ -226,7 +228,7 @@ public class TreeFragment extends Fragment {
                 .setAcceleration(0.00005f, 120)
                 .emitWithGravity(v, Gravity.TOP, 8);*/
 
-        ps = new ParticleSystem(getActivity(), 80, R.drawable.dots, 10000);
+        ps = new ParticleSystem(getActivity(), 80, R.drawable.water, 10000);
         ps.setSpeedModuleAndAngleRange(0f, 0.1f, 140, 140);
         ps.setRotationSpeed(144);
         ps.setAcceleration(0.000017f, 90);

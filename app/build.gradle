@@ -35,4 +35,7 @@ dependencies {
 
     implementation 'com.plattysoft.leonids:LeonidsLib:1.3.2'
     implementation 'com.luolc:emoji-rain:0.1.1'
+
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.google.android.gms:play-services-ads:17.1.1'
 }

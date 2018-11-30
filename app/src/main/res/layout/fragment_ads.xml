@@ -52,6 +52,17 @@
             android:textColor="@color/white" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Reward Points 1000"
+        android:textColor="@color/white"
+        android:background="@drawable/radious_corner"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="5dp"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/generic_recycler"
         android:layout_width="match_parent"

@@ -47,10 +47,10 @@ public class OffersFragment extends Fragment {
         indicator = (CircleIndicator) view.findViewById(R.id.indicator);
         recyclerView=view.findViewById(R.id.menu_listView);
         list=new ArrayList<>();
-        list.add(R.drawable.wood);
-        list.add(R.drawable.three);
-        list.add(R.drawable.wood);
-        list.add(R.drawable.three);
+        list.add(R.drawable.o_one);
+        list.add(R.drawable.o_two);
+        list.add(R.drawable.o_three);
+        list.add(R.drawable.o_four);
         mPager.setAdapter(new MyAdapter(getActivity(), (ArrayList<Integer>) list));
         indicator.setViewPager(mPager);
 
